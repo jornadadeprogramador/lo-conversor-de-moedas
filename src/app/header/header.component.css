@@ -1,0 +1,45 @@
+header {
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.logo {
+
+}
+
+.menu {
+    display: flex;
+    gap: 50px;
+}
+
+.menu__item {
+    font-size: 24px;
+    text-decoration: none;
+    color: #BBB;
+    position: relative;
+    transition: 0.3s;
+}
+
+.menu__item:hover {
+    color: #FFF;
+}
+
+.menu__item::after {
+    content: '';
+    height: 3px;
+    background-color: #FFF;
+    position: absolute;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    opacity: 0%;
+    transition: 0.3s;
+}
+
+.menu__item:hover::after {
+    opacity: 100%;
+}
