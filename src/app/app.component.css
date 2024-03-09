@@ -55,3 +55,35 @@ main {
     padding: 2rem 1.6rem;
     color: #FFF;
 }
+
+.input-valor {
+    font-size: 3rem;
+    color: #FFF;
+    padding: 2rem 1.6rem;
+    border: 1.3px solid #79747E;
+    border-radius: 5px;
+    background-color: transparent;
+    margin-bottom: 4.4rem;
+}
+
+.button {
+    background-color: #F52222;
+    font-size: 1.8rem;
+    padding: 1.4rem;
+    color: #FFF;
+    border-radius: 24px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+}
+
+.placeholder {
+    font-size: 2.8rem;
+    color: #BBBBBB;
+    text-align: center;
+    padding: 9rem;
+}
+
+.resultado_rodape {
+    display: none;
+}
