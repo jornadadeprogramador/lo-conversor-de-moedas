@@ -34,5 +34,24 @@ main {
     font-size: 4rem;
     color: #FFF;
     text-align: center;
-    margin: 0;
+    margin: 0 0 1rem;
+}
+
+.label {
+    font-size: 2.4rem;
+    color: #FFF;
+    padding: 0 0 .4rem 1.6rem;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+
+.dropdown {
+    border: 2px solid #FFF;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 2.8rem;
+    padding: 2rem 1.6rem;
+    color: #FFF;
 }
