@@ -82,5 +82,5 @@
 }
 
 .resultado_rodape {
-    display: none;
+    display: flex;
 }

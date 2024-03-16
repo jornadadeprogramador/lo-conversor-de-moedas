@@ -18,7 +18,8 @@ export class ConversorComponent implements OnInit {
 
   moedaOrigem?: Moeda;
   moedaDestino?: Moeda;
-  valor?: number;
+  valor: number = 0;
+  resultado?: number;
 
   constructor(private service: AwesomeApiService) {
 
@@ -44,13 +45,10 @@ export class ConversorComponent implements OnInit {
   }
 
   calcular() {
-    console.log(`moedaOrigem: ${JSON.stringify(this.moedaOrigem)}`);
-    console.log(`moedaDestino: ${JSON.stringify(this.moedaDestino)}`);
-    console.log(`valor: ${this.valor}`);
-
-    if (this.moedaOrigem && this.moedaDestino) {
-      this.service.getCotacao(this.moedaOrigem, this.moedaDestino).subscribe(value => {
-        console.log(value);
+    if (this.moedaOrigem && this.moedaDestino && this.valor > 0) {
+      this.service.getCotacao(this.moedaOrigem, this.moedaDestino).subscribe(cotacao => {
+        // Realizar o cálculo da cotação
+        this.resultado = this.valor * cotacao.getValor();
       });
     }
   }
