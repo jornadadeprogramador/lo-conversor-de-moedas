@@ -17,10 +17,11 @@
 
             <!-- Resultado + Rodapé -->
             <div *ngIf="resultado && resultado > 0; else placeholder" class="resultado_rodape">
-                <span class="resultado">4,9234 BRL</span>
+                <span class="resultado">{{currencyFormat(resultado)}}</span>
                 <div class="rodape">
-                    <div class="rodape__item">DATA DA COTAÇÃO UTILIZADA: 10/11/2023</div>
-                    <div class="rodape__item">TAXA: 1 DÓLAR AMERICANO EQUIVALE A 4,9123 REAL BRASILEIRO</div>
+                    <div class="rodape__item">DATA DA COTAÇÃO UTILIZADA: {{dataCotacao}}</div>
+                    <div class="rodape__item">TAXA: 1 {{moedaOrigem?.descricao?.toUpperCase()}} EQUIVALE A
+                        {{currencyFormat(valorCotacao)}} {{moedaDestino?.descricao?.toUpperCase()}}</div>
                 </div>
             </div>
 
