@@ -29,6 +29,18 @@ export class ConversorComponent implements OnInit {
     this.service.getMoedas().subscribe((moedas: Moeda[]) => {
       this.moedas = moedas;
     });
+
+    this.setDefaultValues();
+  }
+
+  setDefaultValues() {
+    this.moedaOrigem = { codigo: 'BRL', descricao: 'Real Brasileiro' };
+    this.moedaDestino = { codigo: 'USD', descricao: 'Dólar Americano' };
+    this.valor = 1;
+  }
+
+  compareMoedaFn(m1: Moeda, m2: Moeda): boolean {
+    return m1 && m2 && m1.codigo === m2.codigo;
   }
 
   calcular() {
