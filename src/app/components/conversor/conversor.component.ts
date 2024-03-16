@@ -34,8 +34,8 @@ export class ConversorComponent implements OnInit {
   }
 
   setDefaultValues() {
-    this.moedaOrigem = { codigo: 'BRL', descricao: 'Real Brasileiro' };
-    this.moedaDestino = { codigo: 'USD', descricao: 'Dólar Americano' };
+    this.moedaOrigem = { codigo: 'USD', descricao: 'Dólar Americano' };
+    this.moedaDestino = { codigo: 'BRL', descricao: 'Real Brasileiro' };
     this.valor = 1;
   }
 
@@ -47,6 +47,12 @@ export class ConversorComponent implements OnInit {
     console.log(`moedaOrigem: ${JSON.stringify(this.moedaOrigem)}`);
     console.log(`moedaDestino: ${JSON.stringify(this.moedaDestino)}`);
     console.log(`valor: ${this.valor}`);
+
+    if (this.moedaOrigem && this.moedaDestino) {
+      this.service.getCotacao(this.moedaOrigem, this.moedaDestino).subscribe(value => {
+        console.log(value);
+      });
+    }
   }
 
 }
