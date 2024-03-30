@@ -56,10 +56,18 @@ export class ConversorComponent implements OnInit {
     }).format(value);
   }
 
+  onMoedaChange() {
+    this.resetarResultado();
+  }
+
+  private resetarResultado() {
+    this.resultado = 0;
+  }
+
   calcular() {
     if (this.moedaOrigem && this.moedaDestino && this.valor > 0) {
       this.loading = true;
-      this.resultado = 0;
+      this.resetarResultado();
       this.service.getCotacao(this.moedaOrigem, this.moedaDestino).subscribe({
         next: cotacao => {
           // Realizar o cálculo da cotação
