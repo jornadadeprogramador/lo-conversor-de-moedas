@@ -72,6 +72,34 @@
     margin: 0 0 1rem;
 }
 
+.moedas {
+    display: flex;
+    align-items: center;
+}
+
+.moedas-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.moedas-switch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 0 1rem;
+}
+
+.btn-switch {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
 .label {
     font-size: 2.4rem;
     color: #FFF;
