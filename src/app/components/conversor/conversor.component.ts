@@ -23,6 +23,8 @@ export class ConversorComponent implements OnInit {
   valorCotacao: number = 0;
   dataCotacao: string = '';
 
+  loading: boolean = false;
+
   constructor(private service: AwesomeApiService) {
 
   }
@@ -56,11 +58,21 @@ export class ConversorComponent implements OnInit {
 
   calcular() {
     if (this.moedaOrigem && this.moedaDestino && this.valor > 0) {
-      this.service.getCotacao(this.moedaOrigem, this.moedaDestino).subscribe(cotacao => {
-        // Realizar o cálculo da cotação
-        this.resultado = this.valor * cotacao.getValor();
-        this.valorCotacao = cotacao.getValor();
-        this.dataCotacao = Intl.DateTimeFormat('pt-BR').format(cotacao.createDate!);
+      this.loading = true;
+      this.resultado = 0;
+      this.service.getCotacao(this.moedaOrigem, this.moedaDestino).subscribe({
+        next: cotacao => {
+          // Realizar o cálculo da cotação
+          this.resultado = this.valor * cotacao.getValor();
+          this.valorCotacao = cotacao.getValor();
+          this.dataCotacao = Intl.DateTimeFormat('pt-BR').format(cotacao.createDate!);
+          this.loading = false;
+        },
+        error: (err) => {
+          console.log(JSON.stringify(err));
+          alert('Não foi possível realizar a conversão!');
+          this.loading = false;
+        }
       });
     }
   }
