@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 
 @Component({
@@ -10,5 +10,20 @@ import { HeaderComponent } from './components/header/header.component';
   styleUrl: './app.component.css',
   imports: [CommonModule, RouterOutlet, HeaderComponent]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  pathUrl: string = 'conversor';
+
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.pathUrl = event.url.replace('/', '');
+      }
+    });
+  }
+
 }
