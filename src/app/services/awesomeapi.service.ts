@@ -38,4 +38,20 @@ export class AwesomeApiService {
       );
   }
 
+  getCotacoes(): Observable<Cotacao[]> {
+    let combinacoes = [
+      'USD-BRL', 'CAD-BRL', 'EUR-BRL', 'GBP-BRL', 'ARS-BRL',
+      'BTC-BRL', 'JPY-BRL', 'CHF-BRL', 'AUD-BRL', 'MXN-BRL'
+    ];
+    let moedas = combinacoes.join(',');
+
+    return this.http.get(`${this.URL_API}/last/${moedas}`)
+      .pipe(
+        map((cotacoes: any) => {
+          return Object.keys(cotacoes)
+            .map((key: string) => new Cotacao(cotacoes[key]));
+        })
+      );
+  }
+
 }
