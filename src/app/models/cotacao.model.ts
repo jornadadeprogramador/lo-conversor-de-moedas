@@ -8,8 +8,8 @@ export class Cotacao {
     createDate?: Date | null;
 
     constructor(value?: any) {
-        this.name = value?.name;
-        this.varBid = value?.varBid;
+        this.name = value?.name?.substring(0, value?.name?.indexOf('/'));
+        this.varBid = Number(value?.varBid);
         this.code = value?.code;
         this.codein = value?.codein;
         this.bid = Number(value?.bid);
@@ -19,5 +19,22 @@ export class Cotacao {
 
     getValor(): number {
         return (this.bid + this.ask) / 2;
+    }
+
+    getValorMonetario(): string {
+        return Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: this.codein,
+            maximumFractionDigits: 4,
+            minimumFractionDigits: 4
+          }).format(this.getValor());
+    }
+
+    getVariacao(): string {
+        let prefix = '';
+        if (this.varBid > 0) {
+            prefix = "+";
+        }
+        return prefix + this.varBid?.toFixed(4);
     }
 }

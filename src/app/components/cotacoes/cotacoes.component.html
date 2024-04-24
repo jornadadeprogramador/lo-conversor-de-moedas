@@ -7,11 +7,11 @@
             <div class="header__item flex-2">VARIAÇÃO</div>
             <div class="header__item flex-1">VALOR (R$)</div>
         </div>
-        <div class="cotacao">
-            <div class="cotacao__item flex-2">DÓLAR AMERICANO</div>
-            <div class="cotacao__item flex-2">+0,0001</div>
+        <div *ngFor="let cotacao of cotacoes" class="cotacao">
+            <div class="cotacao__item flex-2">{{cotacao.name}}</div>
+            <div class="cotacao__item flex-2">{{cotacao.getVariacao()}}</div>
             <div class="cotacao__item flex-1">
-                R$ 5,4324
+                {{cotacao.getValorMonetario()}}
                 <button type="button" class="btn-go-to-conversor">
                     <img class="img-go-to-conversor" src="../assets/go-to-conversor.svg"
                         alt="Ícone de ir para o conversor">
