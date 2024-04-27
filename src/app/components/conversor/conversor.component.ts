@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Moeda } from '../../models/moeda.model';
 import { AwesomeApiService } from '../../services/awesomeapi.service';
 import { FormsModule } from '@angular/forms';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'app-conversor',
@@ -25,7 +26,7 @@ export class ConversorComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private service: AwesomeApiService) {
+  constructor(private service: AwesomeApiService, private sharedDataService: SharedDataService) {
 
   }
 
@@ -39,8 +40,8 @@ export class ConversorComponent implements OnInit {
   }
 
   setDefaultValues() {
-    this.moedaOrigem = { codigo: 'USD', descricao: 'Dólar Americano' };
-    this.moedaDestino = { codigo: 'BRL', descricao: 'Real Brasileiro' };
+    this.moedaOrigem = this.sharedDataService.moedaOrigem ?? { codigo: 'USD', descricao: 'Dólar Americano' };
+    this.moedaDestino = this.sharedDataService.moedaDestino ?? { codigo: 'BRL', descricao: 'Real Brasileiro' };
     this.valor = 1;
   }
 
