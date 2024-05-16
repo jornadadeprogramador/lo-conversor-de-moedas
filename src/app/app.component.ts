@@ -12,7 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 })
 export class AppComponent implements OnInit {
 
-  pathUrl: string = 'conversor';
+  rota: string = 'conversor';
 
   constructor(private router: Router) {
 
@@ -21,7 +21,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.pathUrl = event.url.replace('/', '');
+        const pathUrl = event.url.replace('/', '');
+        if (pathUrl.length > 0) {
+          this.rota = pathUrl;
+        }
       }
     });
   }
