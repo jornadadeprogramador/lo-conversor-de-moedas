@@ -2,20 +2,22 @@
     <div class="card">
         <h1 class="title">COTAÇÕES EM TEMPO REAL</h1>
         <div class="divider"></div>
-        <div class="header">
-            <div class="header__item flex-2">MOEDA</div>
-            <div class="header__item flex-2">VARIAÇÃO</div>
-            <div class="header__item flex-1">VALOR (R$)</div>
-        </div>
-        <div *ngFor="let cotacao of cotacoes" class="cotacao">
-            <div class="cotacao__item flex-2">{{cotacao.name}}</div>
-            <div class="cotacao__item flex-2" [ngClass]="getClassBy(cotacao.varBid)">{{cotacao.getVariacao()}}</div>
-            <div class="cotacao__item flex-1">
-                {{cotacao.getValorMonetario()}}
-                <button type="button" class="btn-go-to-conversor" (click)="goToConversor(cotacao)">
-                    <img class="img-go-to-conversor" src="../assets/go-to-conversor.svg"
-                        alt="Ícone de ir para o conversor">
-                </button>
+        <div class="card__content">
+            <div class="header">
+                <div class="header__item flex-2">MOEDA</div>
+                <div class="header__item flex-2">VARIAÇÃO</div>
+                <div class="header__item flex-1">VALOR (R$)</div>
+            </div>
+            <div *ngFor="let cotacao of cotacoes" class="cotacao">
+                <div class="cotacao__item flex-2">{{cotacao.name}}</div>
+                <div class="cotacao__item flex-2" [ngClass]="getClassBy(cotacao.varBid)">{{cotacao.getVariacao()}}</div>
+                <div class="cotacao__item flex-1">
+                    {{cotacao.getValorMonetario()}}
+                    <button type="button" class="btn-go-to-conversor" (click)="goToConversor(cotacao)">
+                        <img class="img-go-to-conversor" src="../assets/go-to-conversor.svg"
+                            alt="Ícone de ir para o conversor">
+                    </button>
+                </div>
             </div>
         </div>
     </div>
