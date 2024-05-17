@@ -30,7 +30,7 @@ export class CotacoesComponent implements OnInit {
   }
 
   goToConversor(cotacao: Cotacao) {
-    
+
     let moedaOrigem$ = this.apiService.getMoeda(cotacao.code);
     let moedaDestino$ = this.apiService.getMoeda(cotacao.codein);
 
@@ -42,8 +42,17 @@ export class CotacoesComponent implements OnInit {
         this.router.navigate(['/conversor']);
       }
     });
-    
-    
+
+  }
+
+  getClassBy(variacao: number): string | null {
+    if (variacao > 0) {
+      return 'variacao-positive';
+    } else if (variacao < 0) {
+      return 'variacao-negative';
+    } else {
+      return null;
+    }
   }
 
 }

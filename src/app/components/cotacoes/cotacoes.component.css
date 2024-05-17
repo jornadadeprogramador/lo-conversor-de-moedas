@@ -59,6 +59,14 @@
     gap: 2.4rem;
 }
 
+.variacao-positive {
+    color: #47FF7B;
+}
+
+.variacao-negative {
+    color: #F52222;
+}
+
 .btn-go-to-conversor {
     background: none;
     border: none;

@@ -9,7 +9,7 @@
         </div>
         <div *ngFor="let cotacao of cotacoes" class="cotacao">
             <div class="cotacao__item flex-2">{{cotacao.name}}</div>
-            <div class="cotacao__item flex-2">{{cotacao.getVariacao()}}</div>
+            <div class="cotacao__item flex-2" [ngClass]="getClassBy(cotacao.varBid)">{{cotacao.getVariacao()}}</div>
             <div class="cotacao__item flex-1">
                 {{cotacao.getValorMonetario()}}
                 <button type="button" class="btn-go-to-conversor" (click)="goToConversor(cotacao)">
