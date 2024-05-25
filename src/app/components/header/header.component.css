@@ -1,10 +1,10 @@
 header {
-    height: 100px;
+    height: 10rem;
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 10rem;
 }
 
 .logo {
@@ -13,11 +13,11 @@ header {
 
 .menu {
     display: flex;
-    gap: 50px;
+    gap: 5rem;
 }
 
 .menu__item {
-    font-size: 24px;
+    font-size: 2.4rem;
     text-decoration: none;
     color: #BBB;
     position: relative;
@@ -30,12 +30,12 @@ header {
 
 .menu__item::after {
     content: '';
-    height: 3px;
+    height: 0.3rem;
     background-color: #FFF;
     position: absolute;
     display: block;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 1rem;
     opacity: 0%;
     transition: 0.3s;
 }
