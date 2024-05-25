@@ -1,15 +1,5 @@
-.full {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-    overflow: hidden;
-}
-
 .bg {
+    height: 100vh;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -21,4 +11,28 @@ main {
 
 .bg-cotacoes {
     background-image: url('../assets/bg-cotacoes.png');
+}
+
+.full {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+main {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .bg-conversor {
+        filter: blur(10px);
+    }
 }
