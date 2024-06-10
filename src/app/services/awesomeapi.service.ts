@@ -23,6 +23,9 @@ export class AwesomeApiService {
               descricao: moedas[key]
             };
           });
+        }),
+        map((moedas: Moeda[]) => {
+          return moedas.sort((a, b) => a.descricao.localeCompare(b.descricao));
         })
       );
   }
