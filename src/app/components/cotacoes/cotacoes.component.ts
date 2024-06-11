@@ -4,7 +4,7 @@ import { Cotacao } from '../../models/cotacao.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SharedDataService } from '../../services/shared-data.service';
-import { forkJoin } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-cotacoes',
@@ -15,7 +15,7 @@ import { forkJoin } from 'rxjs';
 })
 export class CotacoesComponent implements OnInit {
 
-  cotacoes: Cotacao[] = [];
+  cotacoes$: Observable<Cotacao[]> | undefined;
 
   constructor(
     private apiService: AwesomeApiService,
@@ -24,9 +24,7 @@ export class CotacoesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.apiService.getCotacoes().subscribe((cotacoes: Cotacao[]) => {
-      this.cotacoes = cotacoes;
-    });
+    this.cotacoes$ = this.apiService.getCotacoes();
   }
 
   goToConversor(cotacao: Cotacao) {

@@ -5,6 +5,7 @@ import { Moeda } from '../../models/moeda.model';
 import { AwesomeApiService } from '../../services/awesomeapi.service';
 import { FormsModule } from '@angular/forms';
 import { SharedDataService } from '../../services/shared-data.service';
+import { Observable, share } from 'rxjs';
 
 @Component({
   selector: 'app-conversor',
@@ -15,7 +16,7 @@ import { SharedDataService } from '../../services/shared-data.service';
 })
 export class ConversorComponent implements OnInit {
 
-  moedas: Moeda[] = [];
+  moedas$: Observable<Moeda[]> | undefined;
 
   moedaOrigem?: Moeda;
   moedaDestino?: Moeda;
@@ -32,9 +33,7 @@ export class ConversorComponent implements OnInit {
 
   ngOnInit(): void {
     // Carregar usando o pipe async
-    this.service.getMoedas().subscribe((moedas: Moeda[]) => {
-      this.moedas = moedas;
-    });
+    this.moedas$ = this.service.getMoedas().pipe(share());
 
     this.setDefaultValues();
   }

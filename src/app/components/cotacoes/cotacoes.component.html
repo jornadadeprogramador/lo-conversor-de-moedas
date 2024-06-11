@@ -8,7 +8,7 @@
                 <div class="header__item hide-xs justify-content-center">VARIAÇÃO (%)</div>
                 <div class="header__item justify-content-end">VALOR (R$)</div>
             </div>
-            <div *ngFor="let cotacao of cotacoes" class="cotacao">
+            <div *ngFor="let cotacao of cotacoes$ | async" class="cotacao">
                 <div class="cotacao__item">{{cotacao.name}}</div>
                 <div class="cotacao__item hide-xs justify-content-center" [ngClass]="getClassBy(cotacao.varBid)">{{cotacao.getVariacao()}}</div>
                 <div class="cotacao__item justify-content-end">
